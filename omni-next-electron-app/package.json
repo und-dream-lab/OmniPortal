@@ -2,21 +2,21 @@
   "name": "omni-next-electron-app",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
+  "main": "src/app/electron/main.js",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build:web": "next build && electron-builder",
-    "build:electron": "npm run build:web && electron-builder",
+    "build:electron": "next build && electron-builder",
     "start:electron": "cross-env NODE_ENV=development electron .",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
-  "main": "src/app/electron/main.js",
   "build": {
     "appId": "com.omniportal.app",
     "files": [
       "out/**/*",
-      "electron/**/*",
+      "src/app/electron/**/*",
       "package.json"
     ]
   },
