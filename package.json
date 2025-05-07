@@ -5,9 +5,10 @@
   "type": "module",
   "main": "src/app/electron/main.js",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev:next": "next dev --turbopack",
+    "dev:electron": "wait-on http://localhost:3000 && cross-env NODE_ENV=development electron .",
     "build:electron": "next build && electron-builder",
-    "start:electron": "cross-env NODE_ENV=development electron .",
+    "dev": "concurrently \"yarn dev:next\" \"yarn dev:electron\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -31,13 +32,15 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "concurrently": "^9.1.2",
     "cross-env": "^7.0.3",
     "electron": "^36.1.0",
     "electron-builder": "^26.0.12",
     "eslint": "^9",
     "eslint-config-next": "15.3.1",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wait-on": "^8.0.3"
   },
   "packageManager": "yarn@4.9.1"
 }
